@@ -82,7 +82,11 @@ app = FastAPI(
 # CORS configuration for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all origins including localhost:3000
+    allow_origins=[
+        "http://localhost:3000",
+        "https://potato-ai-delta.vercel.app",
+        "https://potato-ai-delta.vercel.app/"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
