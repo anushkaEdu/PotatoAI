@@ -1,0 +1,45 @@
+{
+  "model_name": "PotatoCNN",
+  "version": "1.0.0",
+  "description": "CNN model for potato leaf disease detection",
+  "classes": [
+    "Early Blight",
+    "Late Blight",
+    "Healthy"
+  ],
+  "num_classes": 3,
+  "input_shape": [
+    256,
+    256,
+    3
+  ],
+  "input_dtype": "uint8",
+  "preprocessing": "Rescaling inside model (divide by 255). Feed raw [0,255] pixels.",
+  "test_accuracy": 0.9537,
+  "test_loss": 0.1172,
+  "per_class_accuracy": {
+    "Early Blight": 0.9892,
+    "Late Blight": 0.9304,
+    "Healthy": 0.875
+  },
+  "training_info": {
+    "dataset": "PlantVillage",
+    "total_images": 2152,
+    "train_images": 1721,
+    "val_images": 215,
+    "test_images": 216,
+    "epochs_ran": 36,
+    "best_epoch": 31,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "augmentation": [
+      "RandomFlip",
+      "RandomRotation(0.2)",
+      "RandomZoom(0.15)",
+      "RandomContrast(0.15)",
+      "RandomBrightness(0.1)"
+    ]
+  },
+  "platform": "Kaggle GPU T4 x2",
+  "framework": "TensorFlow / Keras 3"
+}

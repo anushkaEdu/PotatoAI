@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0F1A0F;
+  color: #E8F5E0;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0F1A0F;
+}
+::-webkit-scrollbar-thumb {
+  background: #2D5A1B;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7CB518;
+}
+
+/* Procedural Textures (No Image Requests) */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.bg-leaf-texture {
+  background-image: radial-gradient(circle at center, #2D5A1B 2px, transparent 2px), radial-gradient(circle at center, #2D5A1B 2px, transparent 2px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  opacity: 0.15;
+}

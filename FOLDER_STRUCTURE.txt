@@ -1,0 +1,22 @@
+potato-disease-detector/
+│
+├── README.md                          # Main project documentation, setup instructions, and architecture details
+├── FOLDER_STRUCTURE.txt               # This diagram explaining the directory tree
+│
+├── kaggle/
+│   └── train_model.py                 # Neural Network training script (model architecture, data augmentation, exporting)
+│
+├── backend/
+│   ├── main.py                        # FastAPI application bridging the model to HTTP requests with CORS logic
+│   ├── requirements.txt               # Pinned Python dependencies (FastAPI, TF, uvicorn, etc.)
+│   ├── class_names.json               # (Generated) Array mapping model output probabilities to literal class names
+│   └── potato_model/                  # (Generated) The standard TensorFlow SavedModel directory after Kaggle execution
+│
+└── frontend/
+    ├── package.json                   # React project metadata and dependency registry
+    ├── public/
+    │   └── index.html                 # Main HTML shell containing the root div element
+    └── src/
+        ├── index.js                   # React 18 mount point initializing the <App /> functional component
+        ├── App.jsx                    # Primary UI component handling drag-and-drop, state, API calls, and displaying results
+        └── App.css                    # Comprehensive styling for the application utilizing CSS grids, variables, and animations
