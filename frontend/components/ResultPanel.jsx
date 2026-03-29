@@ -132,19 +132,33 @@ export default function ResultPanel({ result, onReset }) {
         <div className="space-y-4">
           {Object.entries(result.all_scores).map(([className, score]) => {
             const classTheme = getTheme(className);
-            const percentage = (score * 100).toFixed(2);
+            const pct = score * 100;
+            
+            // Format tiny numbers to let user know the score exists
+            let displayPercentage = pct.toFixed(2);
+            if (pct > 0 && pct < 0.01) {
+              displayPercentage = "<0.01";
+            } else if (pct === 0) {
+              displayPercentage = "0.00";
+            }
+
+            // Ensure tiny fractions show a minuscule sliver in the UI bar
+            let barWidth = pct;
+            if (pct > 0 && pct < 2) {
+              barWidth = 2; // minimum 2% width if non-zero so it's visible
+            }
             
             return (
               <div key={className} className="w-full">
                 <div className="flex justify-between text-sm font-inter mb-1">
                   <span className="text-text/80">{className}</span>
-                  <span className="text-text/50 font-mono">{percentage}%</span>
+                  <span className="text-text/50 font-mono">{displayPercentage}%</span>
                 </div>
                 <div className="w-full h-3 bg-forest/20 rounded-full overflow-hidden">
                   <div 
                     className="conf-bar-fill h-full rounded-full transition-all"
                     style={{ backgroundColor: classTheme.color, width: '0%' }}
-                    data-width={percentage}
+                    data-width={barWidth}
                   ></div>
                 </div>
               </div>
